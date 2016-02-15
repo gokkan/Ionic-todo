@@ -30,10 +30,21 @@ $scope.edit = function(task) {
      title: "Edit Task",
      scope: $scope
    }).then(function(res) {    // promise
-     if (res !== undefined) task.title = $scope.data.response;
+     if (res !== undefined) {
+       task.title = $scope.data.response;
+       $scope.tasks.$save(task.title);}
      $ionicListDelegate.closeOptionButtons()
    })
  };
+
+ $scope.remove = function(task) {
+    $ionicPopup.confirm({
+      title: "Remove Task"
+    }).then(function(res) {
+      if (res) $scope.tasks.$remove(task.title);
+      $ionicListDelegate.closeOptionButtons()
+    })
+  };
 
 $scope.shouldShowDelete = false;
 $scope.shouldShowReorder = false;
