@@ -41,7 +41,7 @@ $scope.edit = function(task) {
     $ionicPopup.confirm({
       title: "Remove Task"
     }).then(function(res) {
-      if (res) $scope.tasks.$remove(task.title);
+      if (res) $scope.tasks.$remove(task);
       $ionicListDelegate.closeOptionButtons()
     })
   };
