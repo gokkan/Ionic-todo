@@ -44,7 +44,7 @@
         <ion-item ng-repeat="task in tasks"
         class="item-icon-right"
              	ng-class="{complete: task.completed}"
-              ng-click="task.completed = !task.completed">
+              ng-click="completed(task)">
               <ion-option-button class="button-info"
                                  ng-click="edit(task)">
                 Ändra

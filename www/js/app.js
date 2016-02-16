@@ -27,7 +27,7 @@ $scope.newTask = function() {
 $scope.edit = function(task) {
    $scope.data = { response: task.title };
    $ionicPopup.prompt({
-     title: "Edit Task",
+     title: "Ändra att-göra",
      scope: $scope
    }).then(function(res) {    // promise
      if (res !== undefined) {
@@ -39,12 +39,16 @@ $scope.edit = function(task) {
 
  $scope.remove = function(task) {
     $ionicPopup.confirm({
-      title: "Remove Task"
+      title: "Radera att-göra"
     }).then(function(res) {
       if (res) $scope.tasks.$remove(task);
       $ionicListDelegate.closeOptionButtons()
     })
   };
+
+  $scope.completed = function(task) {
+    $scope.tasks.$save(task.completed=!task.completed);
+   };
 
 $scope.shouldShowDelete = false;
 $scope.shouldShowReorder = false;
